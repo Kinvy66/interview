@@ -1,15 +1,13 @@
 <div align="center">
 📖 Github
 &emsp;&emsp; | &emsp;&emsp;
-<a href="https://interview.huihut.com">📚 Docsify</a>
+<a href="http://kinvystudio.cn/">📚 Docsify</a>
 </div> 
 <br>
 
 <b><details><summary>💡 关于</summary></b>
 
 📚 本仓库是个人整理的C/C++ 技术方向的面试笔记，灵感来源于 [https://github.com/huihut/interview](https://github.com/huihut/interview) (主要原因还是自己太菜，秋招目前0offer),通过这种方式把面试中的八股整理一下。内容和文档结构参考上面提到的仓库。
-
-💡 侧边目录支持方式：[📚 Docsify 文档](https://interview.huihut.com)、[Github + TOC 导航](https://github.com/jawil/GayHub)（[TOC预览.png](https://gitee.com/huihut/interview/raw/master/images/TOC预览.png)）
 
 
 </details>
@@ -27,7 +25,7 @@
 - [💻 操作系统](#-操作系统)
 - [☁️ 计算机网络](#️-计算机网络)
 - [🌩 网络编程](#-网络编程)
-- [💾 数](#-数)
+- [💾 数据库](#-数据库)
 - [📏 设计模式](#-设计模式)
 - [⚙️ 链接装载库](#️-链接装载库)
 - [📚 书籍](#-书籍)
@@ -76,7 +74,7 @@
 
 <a id="database"></a>
 
-## 💾 数
+## 💾 数据库
 
 <a id="design-pattern"></a>
 
@@ -100,6 +98,6 @@
 
 本仓库遵循 CC BY-NC-SA 4.0（署名 - 非商业性使用 - 相同方式共享） 协议，转载请注明出处，不得用于商业目的。
 
-[![CC BY-NC-SA 4.0](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](https://github.com/huihut/interview/blob/master/LICENSE)
+[![CC BY-NC-SA 4.0](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](https://github.com/Kinvy66/interview/blob/master/LICENSE)
 
 
