@@ -38,9 +38,104 @@
 
 ### const
 
+#### 1. 作用
+`const` 是一个类型修饰的关键字，被其修饰的类型具有不可变的特性。
+
+- 1. 修饰普通变量，说明该变量不可以被改变；
+- 2. 修饰指针，分为指向常量的指针(pointer to const)和自身是常量的指针(常量指针，const pointer);
+- 3. 修饰引用，指向常量的引用(reference to const), 用于形参类型，级避免拷贝，同时避免函数对值的修改；
+- 4. 修饰成员函数，说明该成员函数内不能改变成员变量。
+
+
+#### 2. const与指针和引用
+名称区分：顶层const, 即变量本身是const,其值不能改变； 底层const，即变量指向的变量的是const，自身的值可以改变，但是它指向的是一个const的变量；
+
+- 指针
+  - 指向常量的指针
+
+    ```cpp
+    const int ci = 42;
+    int i = 18;
+    const int *p1 = &ci; // 这里的const是底层const
+    const int *p2 = &i;  // 可以用非const变量地址初始化指向常量的指针， 但是后续不能使用该指针解引用改变该变量的值
+    *p2 = 10;     // 错误
+    ```
+
+  - 常量指针，指针的值不能改变
+    ```cpp
+    int i = 42;
+    int j;
+    int *const p = &i;  // 顶层const
+    p = &j;   // 错误, p是常量指针，初始化后之后不能再改变指向
+    *p = 10;  // 正确， 解引用改变的是它指向的变量的值
+    ```
+  注意：`const`的位置只与 `*` 有关，在`*`之前是指向常量的指针，在`*`之后是常量指针
+
+    ```cpp
+    const int * const p;
+    int const * const p; // 等价声明
+    ```
+
+- 引用
+  
+  引用本身自带顶层const属性，即引用一旦初始化就不能改变指向，所以对引用加const 就是加底层const, 使引用指向一个具有const的变量
+  ```cpp
+  const int ci = 42;
+  int i = 10;
+  int& ri = i;
+  const int& cri = ci;
+  const int& crj = i;   // 正确
+  int& rj = ci;         // 错误
+  ```
+
+#### 3. 使用
+const在成员函数和函数传参中的使用
+
 ```cpp
-#include <iostream>
+// const成员函数
+class Entity {
+public:
+    int size() const { 
+        // m_number = 42; // 错误， 不能const成员函数中修改任何成员变量的值
+        return m_size; 
+    }
+
+    int size() { // 和具有const修饰的成员函数构成重载的关系
+        return m_size; 
+    }
+
+private:
+    int m_size;
+    int m_number;
+};
+
+// const 参数，传递只读参数
+void print(const std::string& str) {
+    std::cout << str << std::endl;
+}
+
+int main() {
+    Entity e;
+    const Entity c_e;
+    auto a = e.size();  // 调用非const成员函数
+    auto b =c_e.size(); // 调用const成员函数
+
+    std::string str = "Hello";
+    print(str);
+    return 0;
+}
 ```
+
+#### 4. const与宏定义#define
+| 宏定义 #define|const 常量|
+|---|---|
+|宏定义，相当于字符替换|常量声明|
+|预处理器处理|编译器处理|
+|无类型安全检查|有类型安全检查|
+|不分配内存|要分配内存|
+|存储在代码段|存储在数据段|
+|可通过 `#undef` 取消|不可取消|
+
 
 ### static
 
