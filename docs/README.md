@@ -1143,10 +1143,12 @@ new (place_address) type [size] { braced initializer list }
 <a id="os"></a>
 
 ## 💻 操作系统
+> [图解系统](https://www.xiaolincoding.com/os/)
 
 <a id="computer-network"></a>
 
 ## ☁️ 计算机网络
+> [图解网络](https://www.xiaolincoding.com/network/)
 
 <a id="network-programming"></a>
 
@@ -1159,10 +1161,12 @@ new (place_address) type [size] { braced initializer list }
 <a id="design-pattern"></a>
 
 ## 📏 设计模式
+> [design patterns](https://refactoringguru.cn/design-patterns)
 
 <a id="link-loading-library"></a>
 
 ## ⚙️ 链接装载库
+> 《程序员的自我修养—链接、装载与库》
 
 <a id="books"></a>
 
@@ -1171,13 +1175,24 @@ new (place_address) type [size] { braced initializer list }
 > [Kinvy66/pdf](https://github.com/Kinvy66/pdf): 📚 Computer Science Books 计算机技术类书籍 PDF
 
 
-### 语言：
+### 编程语言
 - 《C++ Primer》
 - 《Effective C++》
 - 《More Effective C++》
 - 《深度探索 C++ 对象模型》
 - 《STL 源码剖析》
 
+### 操作系统
+- 《深入理解计算机系统》/ 《Computer Systems. A Programmer’s Perspective 3rd》
+- 《操作系统导论》/ 《Operating Systems Three Easy Pieces》
+
+### Linux
+- 《UNIX 环境高级编程》/ 《Advanced Programming in the UNIX Environment》
+- 《UNIX网络编程卷》
+
+### X86体系编程
+- 《x86汇编语言_ 从实模式到保护模式》
+- 《x86_x64体系探索及编程》
 
 <a id="review-of-brush-questions-website"></a>
 
