@@ -1,47 +1,10 @@
-<div align="center">
-<a href="https://github.com/Kinvy66/interview">📖 Github</a>
-&emsp;&emsp; | &emsp;&emsp;
-📚 Docsify
-</div> 
-<br>
-
-<b><details><summary>💡 关于</summary></b>
-
-📚 本仓库是个人整理的C/C++ 技术方向的面试笔记，灵感来源于 [https://github.com/huihut/interview](https://github.com/huihut/interview) (主要原因还是自己太菜，秋招目前0offer),通过这种方式把面试中的八股整理一下。内容和文档结构部分参考上面提到的仓库。
-
-🔖 说明：<span style= "background: yellow">容易遗漏的点用黄色背景色标注</span> ; <font color=red>重要的用红色字体标注</font>; 
-
-?> 需要注意的点在引用块中
-
-</details>
+# C++ 基础语法
 
 
-## 📑 目录
 
-- [➕ C/C++](#cc)
-- [⭐️ Effective](#effective)
-- [📦 STL](#stl)
-- [〽️ 数据结构](#data-structure)
-- [⚡️ 算法](#algorithm)
-- [💻 操作系统](#os)
-- [☁️ 计算机网络](#computer-network)
-- [🌩 网络编程](#network-programming)
-- [💾 数据库](#database)
-- [📏 设计模式](#design-pattern)
-- [⚙️ 链接装载库](#link-loading-library)
-- [📚 书籍](#books)
-- [❓ 专题合集](#problems)
-- [💯 复习刷题网站](#review-of-brush-questions-website)
-- [📜 License](#license)
+## const
 
-
-<a id="cc"></a>
-
-## ➕ C/C++
-
-### const
-
-#### 1. 作用
+### 1. 作用
 `const` 是一个类型修饰的关键字，被其修饰的类型具有不可变的特性。
 
 - 1. 修饰普通变量，说明该变量不可以被改变；
@@ -50,7 +13,7 @@
 - 4. 修饰成员函数，说明该成员函数内不能改变成员变量。
 
 
-#### 2. const与指针和引用
+### 2. const与指针和引用
 名称区分：顶层const, 即变量本身是const,其值不能改变； 底层const，即变量指向的变量的是const，自身的值可以改变，但是它指向的是一个const的变量；
 
 - 指针
@@ -91,7 +54,7 @@
   int& rj = ci;         // 错误
   ```
 
-#### 3. 使用
+### 3. 使用
 const在成员函数和函数传参中的使用
 
 ```cpp
@@ -129,7 +92,7 @@ int main() {
 }
 ```
 
-#### 4. const与宏定义#define
+### 4. const与宏定义#define
 | 宏定义 #define|const 常量|
 |---|---|
 |宏定义，相当于字符替换|常量声明|
@@ -140,9 +103,9 @@ int main() {
 |可通过 `#undef` 取消|不可取消|
 
 
-### static
+## static
 
-#### 1. 作用
+### 1. 作用
 1. **修饰普通变量**，修改变量的存储区域和生命周期，使变量存储在静态区，在 main 函数运行前就分配了空间，如果有初始值就用初始值初始化它，如果没有初始值系统用默认值初始化它。
 2. **修饰普通函数**，表明函数的作用范围，仅在定义该函数的文件内才能使用。在多人开发项目时，为了防止与他人命名空间里的函数重名，可以将函数定位为 static。
 3. **修饰成员变量**，修饰成员变量使所有的对象只保存一个该变量，而且不需要生成对象就可以访问该成员。
@@ -150,7 +113,7 @@ int main() {
 
 
 
-### this 指针
+## this 指针
 
 1. `this` 指针是一个隐含于每一个非静态成员函数中的特殊指针。它指向调用该成员函数的那个对象。
 2. 当对一个对象调用成员函数时，编译程序先将对象的地址赋给 `this` 指针，然后调用成员函数，每次成员函数存取数据成员时，都隐式使用 `this` 指针。
@@ -164,9 +127,9 @@ int main() {
 
 
 
-### inline 内联函数
+## inline 内联函数
 
-#### 1. 特征
+### 1. 特征
 
 - 相当于把内联函数里面的内容写在调用内联函数处；
 - 相当于不用执行进入函数的步骤，直接执行函数体；
@@ -175,7 +138,7 @@ int main() {
 - 在类声明中定义的函数，除了虚函数的其他函数都会自动隐式地当成内联函数。类内声明，类外定义，如果需要内联，必须使用 inline 关键字修饰。
 
 
-#### 2. 使用
+### 2. 使用
 ```cpp
 // 普通函数的内联
 inline int func(int first, int second, ...);
@@ -200,7 +163,7 @@ inline int Entity::func2() {
 }
 ```
 
-#### 3. 编译器对 inline 函数的处理步骤
+### 3. 编译器对 inline 函数的处理步骤
 
 1. 将 inline 函数体复制到 inline 函数调用点处；
 2. 为所用 inline 函数中的局部变量分配内存空间；
@@ -208,7 +171,7 @@ inline int Entity::func2() {
 4. 如果 inline 函数有多个返回点，将其转变为 inline 函数代码块末尾的分支（使用 GOTO）。
 
 
-#### 4. 优缺点
+### 4. 优缺点
 **优点:**
 1. 内联函数同宏函数一样将在被调用处进行代码展开，省去了参数压栈、栈帧开辟与回收，结果返回等，从而提高程序运行速度。
 2. 内联函数相比宏函数来说，在代码展开时，会做安全检查或自动类型转换（同普通函数），而宏定义则不会。
@@ -223,14 +186,14 @@ inline int Entity::func2() {
 
 <a id=inline-5></a>
 
-#### 5. 虚函数（virtual）可以是内联函数（inline）吗？
+### 5. 虚函数（virtual）可以是内联函数（inline）吗？
 Are "inline virtual" member functions ever actually "inlined"?
 
 - 虚函数可以是内联函数，内联是可以修饰虚函数的，但是当虚函数表现多态性的时候不能内联。
 - 内联是在编译期建议编译器内联，而虚函数的多态性在运行期，编译器无法知道运行期调用哪个代码，因此虚函数表现为多态性时（运行期）不可以内联。
 - `inline virtual` 唯一可以内联的时候是：编译器知道所调用的对象是哪个类（如 `Base::who()`），这只有在编译器具有实际对象而不是对象的指针或引用时才会发生。
 
-### volatile
+## volatile
 > [C/C++ 中volatile的使用(kinvy blog)](https://www.kinvy.cn/posts/tech/coding/volatile/)
 
 volatile 单词的意思是“易变的”。在C/C++中它作为关键字修饰变量时，是告诉编译器这个变量可能是会变化的，不要进行优化。不要从缓存或寄存器中读取值，而是每次都需要从内存重新读取最新的值。
@@ -241,7 +204,7 @@ volatile 单词的意思是“易变的”。在C/C++中它作为关键字修饰
 - 存储器映射的硬件寄存器通常也要加`volatile`说明，因为每次对它的读写都可能由不同意义；
 
 
-### sizeof
+## sizeof
 `sizeof` 是一个运算符，不是函数。  
 - `sizeof` 对数组，得到整个数组所占空间大小
 - `sizeof` 对指针，得到指针本身所占空间的大小，32bit机器4字节，64bit机器8字节
@@ -269,7 +232,7 @@ std::cout << "strlen " << strlen(s1[0]) << " "
 ```
 
 
-### extern 
+## extern 
 
 1. 声明变量或函数是外部定义的
    ```cpp
@@ -301,12 +264,12 @@ std::cout << "strlen " << strlen(s1[0]) << " "
    ```
 
 
-### C++中的struct和class
+## C++中的struct和class
 struct 和 class 在C++中没有本质的区别，它们都是定义一个类，只是默认的访问权限不同，struct 的默认访问权限是 `public`， class的默认访问权限是 `private`. 
 
 
 
-### union 联合体
+## union 联合体
 联合（union）是一种节省空间的特殊的类，一个 union 可以有多个数据成员，但是在任意时刻只有一个数据成员可以有值。当某个成员被赋值后其他成员变为未定义状态。联合有如下特点：
 - 默认访问控制符为 `public`
 - 可以含有构造函数、析构函数
@@ -354,36 +317,36 @@ int main() {
 
 ?> 联合体变量占用的内存空间是最大的那个数据类型的大小
 
-### enum 枚举类型
-#### 限定作用域的枚举类型
+## enum 枚举类型
+### 限定作用域的枚举类型
 ```cpp
 enum class open_modes { input, output, append };
 ```
 
-#### 不限定作用域的枚举类型
+### 不限定作用域的枚举类型
 ```cpp
 enum color { red, yellow, green };
 enum { floatPrec = 6, doublePrec = 10 };
 ```
 
 
-### friend 友元
+## friend 友元
 - 能访问私有成员
 - 破坏封装性
 - 友元关系不可传递、继承
 - 友元关系的单向性
 - 友元声明的形式及数量不受限制
 
-### using
+## using
 > [C++ using 关键字的几种的用法](https://www.kinvy.cn/posts/tech/coding/c++-using/)
 
-#### using 声明
+### using 声明
 一条 `using` 声明 语句一次只引入命名空间的一个成员。它使得我们可以清楚知道程序中所引用的到底是哪个名字。如:
 ```cpp
 using namespace_name::name;
 ```
 
-#### 构造函数的using声明
+### 构造函数的using声明
 在 C++11 中，派生类能够重用其直接基类定义的构造函数。
 ```cpp
 class Derived : Base {
@@ -433,7 +396,7 @@ cout << x << endl;
 ```
 
 
-### explicit
+## explicit
 - explicit 修饰构造函数时，可以防止隐式转换和复制初始化
 - explicit 修饰转换函数时，可以防止隐式转换，但[按语境转换](https://zh.cppreference.com/w/cpp/language/implicit_conversion)除外
 
@@ -484,7 +447,7 @@ int main()
 
 ```
 
-### auto和decltype
+## auto和decltype
 > [Modern C++ -- auto、decltype](https://www.kinvy.cn/posts/tech/coding/modern-cpp/)
 
 
@@ -505,8 +468,8 @@ auto add(T x, U y)-> decltype(x+y) {
 }
 ```
 
-### 范围解析运算符
-#### 分类
+## 范围解析运算符
+### 分类
 - 全局作用域符（::name）：用于类型名称（类、类成员、成员函数、变量等）前，表示作用域为全局命名空间
 - 类作用域符（class::name）：用于表示指定类型的作用域范围是具体某个类的
 - 命名空间作用域符（namespace::name）:用于表示指定类型的作用域范围是具体某个命名空间的
@@ -538,14 +501,14 @@ int main() {
 }
 ```
 
-### 引用
+## 引用
 
 ?> 无论左值引用还是右值引用，引用变量本身不占用内存空间。
 
-#### 1. 左值引用
+### 1. 左值引用
 常规引用，一般表示对象的身份。
 
-#### 2. 右值引用
+### 2. 右值引用
 右值引用就是必须绑定到右值（一个临时对象、将要销毁的对象）的引用，一般表示对象的值。
 右值引用可实现**转移语义（Move Sementics）**和**精确传递（Perfect Forwarding）**，它的主要目的有两个方面：
 
@@ -553,7 +516,7 @@ int main() {
 - 能够更简洁明确地定义泛型函数。
 
 
-### 引用折叠
+## 引用折叠
 引用折叠主要发生在模板类型参数的变量自带引用的情况：
 ```cpp
 template <typename T> void f(T &p);
@@ -566,14 +529,14 @@ template <typename T> void f3(T &&p);
 
 ?> C++ 11中有万能引用（Universal Reference）的概念：使用`T&&`类型的形参既能绑定右值，又能绑定左值。
 
-### 完美转发
+## 完美转发
 
 - [ ] TODO 完美转发
 
-### 强制类型转换运算符
+## 强制类型转换运算符
 > [C++ 类型转换](https://www.cnblogs.com/allen-rg/p/6999360.html)
 
-#### 1. static_cast
+### 1. static_cast
 
 - 用于非多态类型的转换
 - 不执行运行时类型检查
@@ -590,7 +553,7 @@ char *ptr = static_cast<char*> p;
 ```
 
 
-#### 2. dynamic_cast
+### 2. dynamic_cast
 - 用于多态类型的转换，  <font color="#FF0000">基类中一定要有虚函数</font> 
 - 不能用于内置的基本数据类型的强制转换。
 - 执行行运行时类型检查
@@ -599,10 +562,10 @@ char *ptr = static_cast<char*> p;
 - 可以在整个类层次结构中移动指针，包括向上转换、向下转换
 
 
-#### 3. const_cast
+### 3. const_cast
 - 用于删除 `const`、`volatile` 和 `__unaligned` 特性（如将 `const int` 类型转换为 `int` 类型 ）
 
-#### 4. reinterpret_cast
+### 4. reinterpret_cast
 - 用于位的简单重新解释
 - 滥用 `reinterpret_cast` 运算符可能很容易带来风险。 除非所需转换本身是低级别的，否则应使用其他强制转换运算符之一。
 - 允许将任何指针转换为任何其他指针类型（如 `char*` 到 `int*` 或 `One_class*` 到 `Unrelated_class*` 之类的转换，但其本身并不安全）
@@ -610,7 +573,7 @@ char *ptr = static_cast<char*> p;
 - `reinterpret_cast` 运算符不能丢掉 `const`、`volatile` 或 `__unaligned` 特性。
 - `reinterpret_cast` 的一个实际用途是在哈希函数中，即，通过让两个不同的值几乎不以相同的索引结尾的方式将值映射到索引。
 
-### 成员初始化列表
+## 成员初始化列表
 
 - 更高效：少了一次调用默认构造函数的过程。
 - 有些场合必须要用初始化列表：
@@ -633,7 +596,7 @@ private:
 
 ?> 成员的初始化顺序和成员初始化列表的表达式顺序无关，其初始化顺序和成员声明顺序一致。
 
-### initializer_list 列表初始化
+## initializer_list 列表初始化
 
 用花括号初始化器列表初始化一个对象，其中对应构造函数接受一个 std::initializer_list 参数.
 
@@ -683,28 +646,28 @@ int main()
 ```
 
 
-### 智能指针
+## 智能指针
 
 - [ ] TODO 智能指针
 
-#### 1. shared_ptr
+### 1. shared_ptr
 
 
-#### 2. unique_ptr
+### 2. unique_ptr
 
 
-#### 3. weak_ptr
+### 3. weak_ptr
 
-#### 4. auto_ptr(C++11 已弃用)
+### 4. auto_ptr(C++11 已弃用)
 
 
-### lambda 表达式
+## lambda 表达式
 > [MSDN](https://learn.microsoft.com/zh-cn/cpp/cpp/lambda-expressions-in-cpp?view=msvc-170)
 
 lambda表达式是一种可调用对象，其本质是一个未命名的类，在该类中重载了函数调用运算符，即**仿函数**。
 
 
-#### 1. 基本用法
+### 1. 基本用法
 ```cpp
 // 基本格式
 [captures ] (params ) { body }
@@ -720,7 +683,7 @@ class {
 }
 ```
 
-#### 2. 值捕获
+### 2. 值捕获
 - 值捕获 默认的捕获方式
 - 引用捕获
 
@@ -741,7 +704,7 @@ C++ 中的可调用对象：
 
 
 
-### 面向对象
+## 面向对象
 面向对象编程(Object-oriented programming，OOP) 是C++众多编程范式中的一种，它是一种抽象化的思想。
 
 ![面向对象基本特征](./images/面向对象基本特征.png)
@@ -749,7 +712,7 @@ C++ 中的可调用对象：
 
 面向对象三大特征 ———— 封装、继承、多态
 
-#### 1. 封装
+### 1. 封装
 把客观事物封装成抽象的类， 类中包含属性（成员变量）和操作方法（成员函数），不同的信息可以赋予不同的权限等级：`public`、`proteced`、`private`.
 
 - `public` 成员：可以被任意实体访问
@@ -757,11 +720,11 @@ C++ 中的可调用对象：
 - `private` 成员：只允许被本类的成员函数、友元类或友元函数访问
 
 
-#### 2. 继承
+### 2. 继承
 基类（父类）——> 派生类（子类），在继承关系中子类拥有父类的全部信息。
 
 
-#### 3. 多态
+### 3. 多态
 
 > [The Four Polymorphisms in C++](https://catonmat.net/cpp-polymorphism)
 
@@ -774,7 +737,7 @@ C++ 中的可调用对象：
   - 强制多态（Coercion Polymorphism，编译期/运行期）：基本类型转换、自定义类型转换
 
 
-##### 静态多态（编译器/早绑定）
+#### 静态多态（编译器/早绑定）
 
 函数重载
 
@@ -796,7 +759,7 @@ public:
 }；
 ```
 
-##### 动态多态（运行期/晚绑定）
+#### 动态多态（运行期/晚绑定）
 - 虚函数：用 `virtual` 修饰成员函数，使其成为虚函数
 - 动态绑定：当使用基类的引用或指针调用一个虚函数时将发生动态绑定
 
@@ -838,7 +801,7 @@ int main()
 
 
 
-### 虚析构函数
+## 虚析构函数
 虚析构函数是为了解决基类的指针指向派生类对象，并用基类的指针删除派生类对象。
 
 虚析构函数使用
@@ -870,18 +833,18 @@ int main()
 ?> 在使用基类指向派生类的指针或引用删除类对象时，如果析构函数不是虚函数的话，那么只能调用到基类的析构函数，无法调用到子类的析构函数，从而导致子类的资源无法释放
 
 
-### 虚函数
+## 虚函数
 虚函数是指使用了 `virtual` 关键字修饰的函数，虚函数的作用主要是实现动态多态
 
 
-#### 不能声明为虚函数的函数
+### 不能声明为虚函数的函数
 - 普通函数（非类成员函数）不能是虚函数
 - 静态函数（static）不能是虚函数
 - 构造函数不能是虚函数（因为在调用构造函数时，虚表指针并没有在对象的内存空间中，必须要构造函数调用完成后才会形成虚表指针）
 - 内联函数不能是表现多态性时的虚函数，解释见：[虚函数（virtual）可以是内联函数（inline）吗？](#inline-5)
 
 
-### 纯虚函数
+## 纯虚函数
 纯虚函数是一种特殊的虚函数，在基类中无法对虚函数给出有意义的实现，而把它声明为纯虚函数，它的实现留给该基类的派生类去做。  
 
 
@@ -912,7 +875,7 @@ public:
 ```
 
 
-### 虚函数指针、虚函数表
+## 虚函数指针、虚函数表
 > [虚函数的实现的基本原理](https://www.cnblogs.com/malecrab/p/5572730.html)
 
 在声明了虚函数的类中，类的数据部分除了成员属性，还会有一个指针变量，指向的是一个虚函数表。该表的表项是所有虚函数的函数指针（虚函数指针）。  
@@ -920,7 +883,7 @@ public:
 
 具体虚函的实现原理参考上面的链接
 
-### 虚继承
+## 虚继承
 虚继承用于解决多继承条件下的菱形继承问题（浪费存储空间、存在二义性）。
 
 ![菱形继承](images/菱形继承.drawio.png)
@@ -957,14 +920,14 @@ public:
       
 ```
 
-### 函数模板
+## 函数模板
 - [ ] TODO 函数模板
 
-### 类模板、成员函数模板
+## 类模板、成员函数模板
 - [ ] TODO 类模板、成员函数模板
 
 
-### 抽象类、接口类、聚合类
+## 抽象类、接口类、聚合类
 
 - 抽象类：含有纯虚函数的类， 除了纯虚函数还有其他非虚函数
 - 接口类：仅含有纯虚函数的抽象类
@@ -975,15 +938,15 @@ public:
   - 没有基类，也没有 `virtual` 函数
 
 
-### 内存分配和管理
-#### 1. `malloc`、`calloc`、`realloc`、`alloca`
+## 内存分配和管理
+### 1. `malloc`、`calloc`、`realloc`、`alloca`
 1. `malloc`：申请指定字节数的内存。申请到的内存中的初始值不确定。
 2. `calloc`：为指定长度的对象，分配能容纳其指定个数的内存。申请到的内存的每一位（bit）都初始化为 0。
 3. `realloc`：更改以前分配的内存长度（增加或减少）。当增加长度时，可能需将以前分配区的内容移到另一个足够大的区域，而新增区域内的初始值则不确定。
 4. `alloca`：在栈上申请内存。程序在出栈的时候，会自动释放内存。但是需要注意的是，`alloca `不具可移植性, 而且在没有传统堆栈的机器上很难实现。`alloca` 不宜使用在必须广泛移植的程序中。C99 中支持变长数组 (VLA)，可以用来替代 `alloca`。
 
 
-#### 2. malloc、free
+### 2. malloc、free
 用于分配、释放内存
 
 `malloc`、`free` 使用
@@ -1000,7 +963,7 @@ free(p);
 p = nullptr;
 ```
 
-#### 3. new、delete
+### 3. new、delete
 1. `new` / `new[]`：完成两件事，先底层调用 malloc 分配了内存，然后调用构造函数（创建对象）。
 2. `delete`/`delete[]`：也完成两件事，先调用析构函数（清理资源），然后底层调用 free 释放空间。
 3. `new` 在申请内存时会自动计算所需字节数，而 malloc 则需我们自己输入申请内存空间的字节数。
@@ -1018,7 +981,7 @@ int main()
 }
 ```
 
-#### 4. 定位 new
+### 4. 定位 new
 定位 new（placement new）允许我们向 new 传递额外的地址参数，从而在预先指定的内存区域创建对象。
 ```cpp
 new (place_address) type
@@ -1029,7 +992,7 @@ new (place_address) type [size] { braced initializer list }
 
 - `place_address` 是个指针
 - `initializers` 提供一个（可能为空的）以逗号分隔的初始值列表
-#### 5. delete this 合法吗？
+### 5. delete this 合法吗？
 >[Is it legal (and moral) for a member function to say delete this?](https://isocpp.org/wiki/faq/freestore-mgmt#delete-this)
 
 合法，但：
@@ -1041,180 +1004,12 @@ new (place_address) type [size] { braced initializer list }
 
 
 
-### 运行时类型信息RTTI
+## 运行时类型信息RTTI
  - [ ] TODO 
 
-### C实现CPP类
+## C实现CPP类
 
-### 宏
+## 宏
 
 - [ ] TODO 宏的奇淫技巧
-
-
-<a id="effective"></a>
-
-## ⭐️ Effective
-
-<a id="effective-cpp"></a>
-
-### Effective C++
-
-1. 视 C++ 为一个语言联邦（C、Object-Oriented C++、Template C++、STL）
-2. 宁可以编译器替换预处理器（尽量以 `const`、`enum`、`inline` 替换 `#define`）
-3. 尽可能使用 const
-4. 确定对象被使用前已先被初始化（构造时赋值（copy 构造函数）比 default 构造后赋值（copy assignment）效率高）
-5. 了解 C++ 默默编写并调用哪些函数（编译器暗自为 class 创建 default 构造函数、copy 构造函数、copy assignment 操作符、析构函数）
-6. 若不想使用编译器自动生成的函数，就应该明确拒绝（将不想使用的成员函数声明为 private，并且不予实现）
-7. 为多态基类声明 virtual 析构函数（如果 class 带有任何 virtual 函数，它就应该拥有一个 virtual 析构函数）
-8. 别让异常逃离析构函数（析构函数应该吞下不传播异常，或者结束程序，而不是吐出异常；如果要处理异常应该在非析构的普通函数处理）
-9. 绝不在构造和析构过程中调用 virtual 函数（因为这类调用从不下降至 derived class）
-10. 令 `operator=` 返回一个 `reference to *this` （用于连锁赋值）
-11. 在 `operator=` 中处理 “自我赋值”
-12. 赋值对象时应确保复制 “对象内的所有成员变量” 及 “所有 base class 成分”（调用基类复制构造函数）
-13. 以对象管理资源（资源在构造函数获得，在析构函数释放，建议使用智能指针，资源取得时机便是初始化时机（Resource Acquisition Is Initialization，RAII））
-14. 在资源管理类中小心 copying 行为（普遍的 RAII class copying 行为是：抑制 copying、引用计数、深度拷贝、转移底部资源拥有权（类似 auto_ptr））
-15. 在资源管理类中提供对原始资源（raw resources）的访问（对原始资源的访问可能经过显式转换或隐式转换，一般而言显示转换比较安全，隐式转换对客户比较方便）
-16. 成对使用 new 和 delete 时要采取相同形式（`new` 中使用 `[]` 则 `delete []`，`new` 中不使用 `[]` 则 `delete`）
-17. 以独立语句将 newed 对象存储于（置入）智能指针（如果不这样做，可能会因为编译器优化，导致难以察觉的资源泄漏）
-18. 让接口容易被正确使用，不易被误用（促进正常使用的办法：接口的一致性、内置类型的行为兼容；阻止误用的办法：建立新类型，限制类型上的操作，约束对象值、消除客户的资源管理责任）
-19. 设计 class 犹如设计 type，需要考虑对象创建、销毁、初始化、赋值、值传递、合法值、继承关系、转换、一般化等等。
-20. 宁以 pass-by-reference-to-const 替换 pass-by-value （前者通常更高效、避免切割问题（slicing problem），但不适用于内置类型、STL迭代器、函数对象）
-21. 必须返回对象时，别妄想返回其 reference（绝不返回 pointer 或 reference 指向一个 local stack 对象，或返回 reference 指向一个 heap-allocated 对象，或返回 pointer 或 reference 指向一个 local static 对象而有可能同时需要多个这样的对象。）
-22. 将成员变量声明为 private（为了封装、一致性、对其读写精确控制等）
-23. 宁以 non-member、non-friend 替换 member 函数（可增加封装性、包裹弹性（packaging flexibility）、机能扩充性）
-24. 若所有参数（包括被this指针所指的那个隐喻参数）皆须要类型转换，请为此采用 non-member 函数
-25. 考虑写一个不抛异常的 swap 函数
-26. 尽可能延后变量定义式的出现时间（可增加程序清晰度并改善程序效率）
-27. 尽量少做转型动作（旧式：`(T)expression`、`T(expression)`；新式：`const_cast<T>(expression)`、`dynamic_cast<T>(expression)`、`reinterpret_cast<T>(expression)`、`static_cast<T>(expression)`、；尽量避免转型、注重效率避免 dynamic_casts、尽量设计成无需转型、可把转型封装成函数、宁可用新式转型）
-28. 避免使用 handles（包括 引用、指针、迭代器）指向对象内部（以增加封装性、使 const 成员函数的行为更像 const、降低 “虚吊号码牌”（dangling handles，如悬空指针等）的可能性）
-29. 为 “异常安全” 而努力是值得的（异常安全函数（Exception-safe functions）即使发生异常也不会泄露资源或允许任何数据结构败坏，分为三种可能的保证：基本型、强列型、不抛异常型）
-30. 透彻了解 inlining 的里里外外（inlining 在大多数 C++ 程序中是编译期的行为；inline 函数是否真正 inline，取决于编译器；大部分编译器拒绝太过复杂（如带有循环或递归）的函数 inlining，而所有对 virtual 函数的调用（除非是最平淡无奇的）也都会使 inlining 落空；inline 造成的代码膨胀可能带来效率损失；inline 函数无法随着程序库的升级而升级）
-31. 将文件间的编译依存关系降至最低（如果使用 object references 或 object pointers 可以完成任务，就不要使用 objects；如果能够，尽量以 class 声明式替换 class 定义式；为声明式和定义式提供不同的头文件）
-32. 确定你的 public 继承塑模出 is-a（是一种）关系（适用于 base classes 身上的每一件事情一定适用于 derived classes 身上，因为每一个 derived class 对象也都是一个 base class 对象）
-33. 避免遮掩继承而来的名字（可使用 using 声明式或转交函数（forwarding functions）来让被遮掩的名字再见天日）
-34. 区分接口继承和实现继承（在 public 继承之下，derived classes 总是继承 base class 的接口；pure virtual 函数只具体指定接口继承；非纯 impure virtual 函数具体指定接口继承及缺省实现继承；non-virtual 函数具体指定接口继承以及强制性实现继承）
-35. 考虑 virtual 函数以外的其他选择（如 Template Method 设计模式的 non-virtual interface（NVI）手法，将 virtual 函数替换为 “函数指针成员变量”，以 `tr1::function` 成员变量替换 virtual 函数，将继承体系内的 virtual 函数替换为另一个继承体系内的 virtual 函数）
-36. 绝不重新定义继承而来的 non-virtual 函数
-37. 绝不重新定义继承而来的缺省参数值，因为缺省参数值是静态绑定（statically bound），而 virtual 函数却是动态绑定（dynamically bound）
-38. 通过复合塑模 has-a（有一个）或 “根据某物实现出”（在应用域（application domain），复合意味 has-a（有一个）；在实现域（implementation domain），复合意味着 is-implemented-in-terms-of（根据某物实现出））
-39. 明智而审慎地使用 private 继承（private 继承意味着 is-implemented-in-terms-of（根据某物实现出），尽可能使用复合，当 derived class 需要访问 protected base class 的成员，或需要重新定义继承而来的时候 virtual 函数，或需要 empty base 最优化时，才使用 private 继承）
-40. 明智而审慎地使用多重继承（多继承比单一继承复杂，可能导致新的歧义性，以及对 virtual 继承的需要，但确有正当用途，如 “public 继承某个 interface class” 和 “private 继承某个协助实现的 class”；virtual 继承可解决多继承下菱形继承的二义性问题，但会增加大小、速度、初始化及赋值的复杂度等等成本）
-41. 了解隐式接口和编译期多态（class 和 templates 都支持接口（interfaces）和多态（polymorphism）；class 的接口是以签名为中心的显式的（explicit），多态则是通过 virtual 函数发生于运行期；template 的接口是奠基于有效表达式的隐式的（implicit），多态则是通过 template 具现化和函数重载解析（function overloading resolution）发生于编译期）
-42. 了解 typename 的双重意义（声明 template 类型参数是，前缀关键字 class 和 typename 的意义完全相同；请使用关键字 typename 标识嵌套从属类型名称，但不得在基类列（base class lists）或成员初值列（member initialization list）内以它作为 base class 修饰符）
-43. 学习处理模板化基类内的名称（可在 derived class templates 内通过 `this->` 指涉 base class templates 内的成员名称，或藉由一个明白写出的 “base class 资格修饰符” 完成）
-44. 将与参数无关的代码抽离 templates（因类型模板参数（non-type template parameters）而造成代码膨胀往往可以通过函数参数或 class 成员变量替换 template 参数来消除；因类型参数（type parameters）而造成的代码膨胀往往可以通过让带有完全相同二进制表述（binary representations）的实现类型（instantiation types）共享实现码）
-45. 运用成员函数模板接受所有兼容类型（请使用成员函数模板（member function templates）生成 “可接受所有兼容类型” 的函数；声明 member templates 用于 “泛化 copy 构造” 或 “泛化 assignment 操作” 时还需要声明正常的 copy 构造函数和 copy assignment 操作符）
-46. 需要类型转换时请为模板定义非成员函数（当我们编写一个 class template，而它所提供之 “与此 template 相关的” 函数支持 “所有参数之隐式类型转换” 时，请将那些函数定义为 “class template 内部的 friend 函数”）
-47. 请使用 traits classes 表现类型信息（traits classes 通过 templates 和 “templates 特化” 使得 “类型相关信息” 在编译期可用，通过重载技术（overloading）实现在编译期对类型执行 if...else 测试）
-48. 认识 template 元编程（模板元编程（TMP，template metaprogramming）可将工作由运行期移往编译期，因此得以实现早期错误侦测和更高的执行效率；TMP 可被用来生成 “给予政策选择组合”（based on combinations of policy choices）的客户定制代码，也可用来避免生成对某些特殊类型并不适合的代码）
-49. 了解 new-handler 的行为（set\_new\_handler 允许客户指定一个在内存分配无法获得满足时被调用的函数；nothrow new 是一个颇具局限的工具，因为它只适用于内存分配（operator new），后继的构造函数调用还是可能抛出异常）
-50. 了解 new 和 delete 的合理替换时机（为了检测运用错误、收集动态分配内存之使用统计信息、增加分配和归还速度、降低缺省内存管理器带来的空间额外开销、弥补缺省分配器中的非最佳齐位、将相关对象成簇集中、获得非传统的行为）
-51. 编写 new 和 delete 时需固守常规（operator new 应该内涵一个无穷循环，并在其中尝试分配内存，如果它无法满足内存需求，就应该调用 new-handler，它也应该有能力处理 0 bytes 申请，class 专属版本则还应该处理 “比正确大小更大的（错误）申请”；operator delete 应该在收到 null 指针时不做任何事，class 专属版本则还应该处理 “比正确大小更大的（错误）申请”）
-52. 写了 placement new 也要写 placement delete（当你写一个 placement operator new，请确定也写出了对应的 placement operator delete，否则可能会发生隐微而时断时续的内存泄漏；当你声明 placement new 和 placement delete，请确定不要无意识（非故意）地遮掩了它们地正常版本）
-53. 不要轻忽编译器的警告
-54. 让自己熟悉包括 TR1 在内的标准程序库（TR1，C++ Technical Report 1，C++11 标准的草稿文件）
-55. 让自己熟悉 Boost（准标准库）
-
-
-<a id="more-effective-cpp"></a>
-
-### More Effective C++
-
-
-<a id="stl"></a>
-
-## 📦 STL
-> [C++ STL Tutorial](https://cui-jiacai.gitbook.io/c++-stl-tutorial/)
-
-
-<a id="data-structure"></a>
-
-## 〽️ 数据结构
-
-
-<a id="algorithm"></a>
-
-## ⚡️ 算法
-
-<a id="problems"></a>
-
-## ❓ 专题合集
-
-### [C++](./cpp/REAMD.md)
- - [引用](cpp/引用.md)
- - [多态实现原理](cpp/多态实现原理.md)
-
-### [STL](./stl/README.md)
-
-### [操作系统](./stl/README.md)
-
-### [计算机网络](./Network/READMD.md)
-
-
-<a id="os"></a>
-
-## 💻 操作系统
-> [图解系统](https://www.xiaolincoding.com/os/)
-
-<a id="computer-network"></a>
-
-## ☁️ 计算机网络
-> [图解网络](https://www.xiaolincoding.com/network/)
-
-<a id="network-programming"></a>
-
-## 🌩 网络编程
-
-<a id="database"></a>
-
-## 💾 数据库
-
-<a id="design-pattern"></a>
-
-## 📏 设计模式
-> [design patterns](https://refactoringguru.cn/design-patterns)
-
-<a id="link-loading-library"></a>
-
-## ⚙️ 链接装载库
-> 《程序员的自我修养—链接、装载与库》
-
-<a id="books"></a>
-
-## 📚 书籍
-
-> [Kinvy66/pdf](https://github.com/Kinvy66/pdf): 📚 Computer Science Books 计算机技术类书籍 PDF
-
-
-### 编程语言
-- 《C++ Primer》
-- 《Effective C++》
-- 《More Effective C++》
-- 《深度探索 C++ 对象模型》
-- 《STL 源码剖析》
-
-### 操作系统
-- 《深入理解计算机系统》/ 《Computer Systems. A Programmer’s Perspective 3rd》
-- 《操作系统导论》/ 《Operating Systems Three Easy Pieces》
-
-### Linux
-- 《UNIX 环境高级编程》/ 《Advanced Programming in the UNIX Environment》
-- 《UNIX网络编程卷》
-
-### X86体系编程
-- 《x86汇编语言_ 从实模式到保护模式》
-- 《x86_x64体系探索及编程》
-
-<a id="review-of-brush-questions-website"></a>
-
-## 💯 复习刷题网站
-
-<a id="license"></a>
-
-## 📜 License
-
-本仓库遵循 CC BY-NC-SA 4.0（署名 - 非商业性使用 - 相同方式共享） 协议，转载请注明出处，不得用于商业目的。
-
-[![CC BY-NC-SA 4.0](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](https://github.com/Kinvy66/interview/blob/master/LICENSE)
-
 
